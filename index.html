@@ -4,17 +4,44 @@
   <title>WEB - INDEX</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
+  <script>
+    function LinksSetColor(color) {
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while (i < alist.length) {
+        alist[i].style.color = color;
+        i = i + 1;
+      }
+    }
+    function BodySetColor(color) {
+      document.querySelector('body').style.color = color;
+    }
+    function BodySetBackgroundColor(color) {
+      document.querySelector('body').style.backgroundColor = color;
+    }
+    function nightDayHandler(self) {
+      var target = document.querySelector('body')
+      if(self.value === 'night') {
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+        self.value = 'day';
+
+        Links.setColor('powderblue');
+      } else {
+        Body.setBackgroundColor('white');
+        Body.setColor('blue');
+        self.value = 'night';
+
+        Links.setColor('blue');
+      }
+  }
+  </script>
 </head>
 <body>
   <h1><a href="index.html">WEB</a></h1>
   <input type="button" value="night" onclick="
-    document.querySelector('body').style.backgroundColor = 'black';
-    document.querySelector('body').style.color = 'white';
+    nightDayHandler(this);
   ">
-  <input type="button" value="day" onclick="
-    document.querySelector('body').style.backgroundColor = 'white';
-    document.querySelector('body').style.color = 'black';
-    ">
   <div id="grid">
   <ol>
     <li><a href="1.html">HTML</a></li>
